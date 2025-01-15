@@ -1,7 +1,7 @@
 {
-  "name": "project_aileron_backend",
+  "name": "rafflesia_server",
   "type": "module",
-  "version": "7.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "dotenv -e .env.development -- nodemon --exec \"node --loader ts-node/esm\" ./server.ts",
