@@ -1,0 +1,52 @@
+{
+  "name": "project_aileron_backend",
+  "type": "module",
+  "version": "7.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "dotenv -e .env.development -- nodemon --exec \"node --loader ts-node/esm\" ./server.ts",
+    "build": "tsc --project tsconfig.json",
+    "start": "dotenv -e .env.production -- node ./build/server.js",
+    "lint": "eslint . --fix",
+    "migration:generate": "dotenv -e .env.development -- typeorm-ts-node-esm --dataSource './datasource.ts' migration:generate --pretty migrations/$npm_config_name",
+    "postmigration:generate": "./scripts/postmigration.sh",
+    "migration:run": "dotenv -e .env.development -- typeorm-ts-node-esm --dataSource './datasource.ts' migration:run",
+    "migration:revert": "dotenv -- typeorm-ts-node-esm --dataSource='./datasource.ts' migration:revert"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.598.0",
+    "@aws-sdk/s3-request-presigner": "^3.598.0",
+    "@azure-rest/ai-vision-image-analysis": "^1.0.0-beta.2",
+    "@azure/core-auth": "^1.7.2",
+    "@azure/openai": "^1.0.0-beta.12",
+    "@types/cors": "^2.8.14",
+    "@types/express": "^4.17.19",
+    "@types/morgan": "^1.9.6",
+    "@types/multer": "^1.4.9",
+    "@types/multer-s3": "^3.0.2",
+    "@types/node": "^20.12.12",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "dotenv-cli": "^7.3.0",
+    "express": "^4.18.2",
+    "firebase-admin": "^12.0.0",
+    "fs": "^0.0.1-security",
+    "glob": "^10.4.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-s3": "^3.0.1",
+    "node": "^22.2.0",
+    "pg": "^8.11.3",
+    "stream-chat": "^8.26.0",
+    "typeorm": "^0.3.20",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/copyfiles": "~2.4.4",
+    "@types/pg": "~8.11.6",
+    "@types/supertest": "^6.0.2",
+    "nodemon": "^3.1.0",
+    "supertest": "^6.3.4",
+    "ts-node": "^10.9.2"
+  }
+}
